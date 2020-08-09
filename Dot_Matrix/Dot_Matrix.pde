@@ -1,7 +1,8 @@
-int dotS = 10;//dot size
+int dotS = 10;//dot size 30
 PGraphics pg, raw;
 
 void setup(){
+  //fullScreen(JAVA2D);
   size(1000, 250);
   pg = createGraphics(width, height);
   raw = createGraphics(width, height);
@@ -11,7 +12,7 @@ void draw(){
   pg.beginDraw();
   pg.background(0);
   pg.textAlign(CENTER, CENTER);
-  pg.textSize(115);
+  pg.textSize(11.5*dotS);
   pg.text("Art by Nekodigi", mouseX, height/2);
   pg.endDraw();
   image(pg, 0, 0);
@@ -21,7 +22,7 @@ void draw(){
   raw.colorMode(HSB, 360, 100, 100, 100);
   for(int i=dotS/2; i<width; i+=dotS){
     for(int j=dotS/2; j<height; j+=dotS){
-      if(brightness(pg.pixels[j*pg.width+i]) == 255)raw.fill((i/dotS+j/dotS+frameCount)%360, 100, 100);
+      if(brightness(pg.pixels[j*pg.width+i]) == 255)raw.fill((i/dotS+j/dotS+frameCount*dotS/10)%360, 100, 100);
       else raw.fill(0);
       raw.ellipse(i, j, dotS*0.8, dotS*0.8);
     }
